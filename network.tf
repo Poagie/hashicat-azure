@@ -2,9 +2,13 @@ provider "azurerm" {
   features {}
 }
 
-resource "azurerm_resource_group" "networkresourcegroup" {
-  name     = "my-resources"
-  location = "eastus"
+resource "azurerm_resource_group" "myresourcegroup" {
+  name     = "${var.prefix}-workshop"
+  location = var.location
+
+  tags = {
+    environment = "Production"
+  }
 }
 
 module "network" {
